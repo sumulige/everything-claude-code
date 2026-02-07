@@ -1,6 +1,9 @@
 name: Release Smoke
 
 on:
+  workflow_run:
+    workflows: ["Release"]
+    types: [completed]
   release:
     types: [published]
   workflow_dispatch:
@@ -16,6 +19,7 @@ permissions:
 jobs:
   smoke:
     name: Smoke (${{ matrix.os }})
+    if: github.event_name != 'workflow_run' || (github.event.workflow_run.conclusion == 'success' && startsWith(github.event.workflow_run.head_branch, 'v'))
     runs-on: ${{ matrix.os }}
     timeout-minutes: 25
 
@@ -31,8 +35,14 @@ jobs:
           set -euo pipefail
           if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
             TAG="${{ inputs.tag }}"
+          elif [ "${{ github.event_name }}" = "workflow_run" ]; then
+            TAG="${{ github.event.workflow_run.head_branch }}"
           else
             TAG="${{ github.event.release.tag_name }}"
+          fi
+          if ! [[ "$TAG" =~ ^v[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+            echo "Not a version tag: $TAG"
+            exit 1
           fi
           echo "SMOKE_TAG=$TAG" >> "$GITHUB_ENV"
 

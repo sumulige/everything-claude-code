@@ -1,6 +1,9 @@
 name: Publish (npm)
 
 on:
+  workflow_run:
+    workflows: ["Release"]
+    types: [completed]
   release:
     types: [published]
   workflow_dispatch:
@@ -17,6 +20,7 @@ permissions:
 jobs:
   publish:
     name: Publish to npm
+    if: github.event_name != 'workflow_run' || (github.event.workflow_run.conclusion == 'success' && startsWith(github.event.workflow_run.head_branch, 'v'))
     runs-on: ubuntu-latest
     timeout-minutes: 15
     env:
@@ -30,6 +34,8 @@ jobs:
           set -euo pipefail
           if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
             TAG="${{ inputs.tag }}"
+          elif [ "${{ github.event_name }}" = "workflow_run" ]; then
+            TAG="${{ github.event.workflow_run.head_branch }}"
           else
             TAG="${{ github.event.release.tag_name }}"
           fi
