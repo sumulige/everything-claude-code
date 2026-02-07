@@ -5,6 +5,7 @@ const { spawnSync } = require('child_process');
 const { ensureDir } = require('../lib/utils');
 const { writeJson, writeText } = require('./json');
 const { validateVerifySummary, throwIfErrors } = require('./validate');
+const { runKernel } = require('./kernel');
 
 const { getPackageManager } = require('../lib/package-manager');
 
@@ -66,6 +67,22 @@ function runVerify({ worktreePath, verifyConfig, outDir }) {
   ensureDir(outDir);
 
   const commands = getVerifyCommands(verifyConfig || { mode: 'auto' }, worktreePath);
+
+  const kernelOut = runKernel('verify.run', {
+    worktreePath,
+    outDir,
+    commands: commands.map(c => ({ name: String(c.name), command: String(c.command) }))
+  });
+  if (kernelOut !== null) {
+    if (!kernelOut || kernelOut.version !== 1) {
+      throw new Error('ecc-kernel verify.run returned invalid output');
+    }
+    throwIfErrors(validateVerifySummary(kernelOut), 'verify summary');
+    const sumPath = path.join(outDir, 'summary.json');
+    if (!fs.existsSync(sumPath)) writeJson(sumPath, kernelOut);
+    return kernelOut;
+  }
+
   const results = [];
 
   let ok = true;
@@ -106,4 +123,3 @@ function runVerify({ worktreePath, verifyConfig, outDir }) {
 module.exports = {
   runVerify
 };
-

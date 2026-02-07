@@ -31,6 +31,7 @@ const git = require('./ecc/git');
 const { readJson } = require('./ecc/json');
 const { validateLock, throwIfErrors } = require('./ecc/validate');
 const { getProvider } = require('./ecc/providers');
+const kernel = require('./ecc/kernel');
 
 function parseArgs(argv) {
   const args = { _: [] };
@@ -185,6 +186,15 @@ function cmdDoctor() {
   const checks = [];
 
   checks.push({ name: 'node', ok: true, detail: process.version });
+
+  try {
+    const k = kernel.getKernel();
+    const detail = k.enabled ? `rust (${k.bin})` : 'js fallback';
+    checks.push({ name: 'kernel', ok: true, detail });
+  } catch (err) {
+    const msg = err && err.message ? err.message : String(err);
+    checks.push({ name: 'kernel', ok: false, detail: msg });
+  }
 
   const gitVer = runCmd('git', ['--version']);
   checks.push({ name: 'git', ok: gitVer.ok, detail: gitVer.ok ? gitVer.stdout : gitVer.stderr });

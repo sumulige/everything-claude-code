@@ -3,6 +3,8 @@ const path = require('path');
 
 const { spawnSync } = require('child_process');
 
+const { runKernel } = require('./kernel');
+
 function runGit(args, opts = {}) {
   const res = spawnSync('git', args, {
     encoding: 'utf8',
@@ -74,6 +76,15 @@ function ensureOwned({ touchedFiles, allowedPathPrefixes }) {
 }
 
 function applyPatch({ worktreePath, patchPath, allowedPathPrefixes }) {
+  const kernelOut = runKernel('patch.apply', {
+    worktreePath,
+    patchPath,
+    allowedPathPrefixes: Array.isArray(allowedPathPrefixes) ? allowedPathPrefixes : []
+  });
+  if (kernelOut && Array.isArray(kernelOut.touchedFiles)) {
+    return { touchedFiles: kernelOut.touchedFiles };
+  }
+
   const patchText = fs.readFileSync(patchPath, 'utf8');
   const trimmed = patchText.trim();
   if (!trimmed) {
@@ -100,4 +111,3 @@ module.exports = {
   touchedFilesFromUnifiedDiff,
   applyPatch
 };
-

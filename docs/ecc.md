@@ -19,6 +19,23 @@ Core properties:
 node scripts/ecc.js --help
 ```
 
+## Rust Kernel (Optional, Low-Memory)
+
+ECC can offload the heavy "kernel" operations (worktree / patch apply / verify command runner)
+to a small Rust binary: `ecc-kernel`.
+
+Build it (from repo root):
+
+```bash
+cargo build --release --manifest-path crates/ecc-kernel/Cargo.toml
+```
+
+Then rerun `ecc`; `ecc doctor` will report `kernel: rust (...)`.
+
+Environment:
+- `ECC_KERNEL=auto|rust|node` (default: `auto`)
+- `ECC_KERNEL_PATH=/absolute/path/to/ecc-kernel`
+
 ### Option B: Install as a CLI (global)
 
 ```bash
@@ -86,4 +103,3 @@ ecc run "<intent>" [--run-id <id>] [--worktree-root <path>] [--keep-worktree] [-
 Notes:
 - `--commit` commits in the worktree **only after verify passes**.
 - If a patch touches files outside a task's `allowedPathPrefixes`, `exec` **fails fast**.
-

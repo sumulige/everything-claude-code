@@ -3,6 +3,8 @@ const os = require('os');
 const path = require('path');
 const { spawnSync } = require('child_process');
 
+const { runKernel } = require('./kernel');
+
 function runGit(args, opts = {}) {
   const res = spawnSync('git', args, {
     encoding: 'utf8',
@@ -75,6 +77,9 @@ function isGitWorktree(dir) {
 }
 
 function ensureWorktree({ repoRoot, worktreePath, branch, baseSha }) {
+  const kernelOut = runKernel('worktree.ensure', { repoRoot, worktreePath, branch, baseSha });
+  if (kernelOut && kernelOut.worktreePath) return kernelOut.worktreePath;
+
   assertExternalWorktreePath({ repoRoot, worktreePath });
   ensureBranchAt(repoRoot, branch, baseSha);
 
@@ -93,6 +98,9 @@ function ensureWorktree({ repoRoot, worktreePath, branch, baseSha }) {
 }
 
 function removeWorktree({ repoRoot, worktreePath, force = true }) {
+  const kernelOut = runKernel('worktree.remove', { repoRoot, worktreePath, force: !!force });
+  if (kernelOut && kernelOut.ok) return;
+
   const args = ['-C', repoRoot, 'worktree', 'remove'];
   if (force) args.push('--force');
   args.push(worktreePath);
@@ -101,6 +109,9 @@ function removeWorktree({ repoRoot, worktreePath, force = true }) {
 }
 
 function commitAll({ repoRoot, message }) {
+  const kernelOut = runKernel('git.commit_all', { repoRoot, message });
+  if (kernelOut && kernelOut.sha) return kernelOut.sha;
+
   let res = runGit(['-C', repoRoot, 'add', '-A']);
   if (!res.ok) throw new Error(res.stderr || 'git add failed');
 
@@ -125,4 +136,3 @@ module.exports = {
   removeWorktree,
   commitAll
 };
-

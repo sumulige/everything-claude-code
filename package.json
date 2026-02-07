@@ -10,6 +10,9 @@
     "scripts/ecc.js",
     "scripts/ecc/",
     "scripts/lib/",
+    "crates/ecc-kernel/Cargo.toml",
+    "crates/ecc-kernel/Cargo.lock",
+    "crates/ecc-kernel/src/",
     "packs/",
     "schemas/",
     "prompts/ecc/",
@@ -18,6 +21,7 @@
     "LICENSE"
   ],
   "scripts": {
+    "ecc:build-kernel": "cargo build --release --manifest-path crates/ecc-kernel/Cargo.toml",
     "test": "node tests/run-all.js"
   },
   "devDependencies": {
