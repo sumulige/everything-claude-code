@@ -13,7 +13,13 @@ const testsDir = __dirname;
 const testFiles = [
   'lib/utils.test.js',
   'lib/package-manager.test.js',
-  'hooks/hooks.test.js'
+  'hooks/hooks.test.js',
+  'ecc/ecc.test.js',
+  'ecc/schema.test.js',
+  'ecc/plan.test.js',
+  'ecc/exec.test.js',
+  'ecc/verify.test.js',
+  'ecc/run.e2e.test.js'
 ];
 
 console.log('╔══════════════════════════════════════════════════════════╗');

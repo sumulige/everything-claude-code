@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "intent": "unauthorized-demo",
+  "tasks": [
+    {
+      "id": "impl-core",
+      "title": "Unauthorized patch demo",
+      "kind": "patch",
+      "dependsOn": [],
+      "allowedPathPrefixes": ["src/"],
+      "prompt": "Attempt to write outside allowedPathPrefixes (should be blocked by executor)."
+    }
+  ]
+}
+

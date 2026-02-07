@@ -1,0 +1,8 @@
+diff --git a/tests/ecc-demo.txt b/tests/ecc-demo.txt
+new file mode 100644
+index 0000000..3f67f1e
+--- /dev/null
++++ b/tests/ecc-demo.txt
+@@ -0,0 +1 @@
++ecc-demo: ok
+

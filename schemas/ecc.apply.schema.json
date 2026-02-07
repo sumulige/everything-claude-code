@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ECC Apply Result",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["version", "appliedAt", "baseSha", "tasks"],
+  "properties": {
+    "version": { "const": 1 },
+    "appliedAt": { "type": "string", "minLength": 1 },
+    "baseSha": { "type": "string", "minLength": 1 },
+    "tasks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "patchPath", "ok"],
+        "properties": {
+          "id": { "type": "string", "minLength": 1 },
+          "patchPath": { "type": "string", "minLength": 1 },
+          "ok": { "type": "boolean" },
+          "error": { "type": "string" }
+        }
+      }
+    },
+    "commit": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["sha", "message"],
+      "properties": {
+        "sha": { "type": "string", "minLength": 1 },
+        "message": { "type": "string", "minLength": 1 }
+      }
+    }
+  }
+}
+

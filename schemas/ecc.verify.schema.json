@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ECC Verify Summary",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["version", "ranAt", "commands", "ok"],
+  "properties": {
+    "version": { "const": 1 },
+    "ranAt": { "type": "string", "minLength": 1 },
+    "commands": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["name", "command", "ok", "exitCode", "outputPath"],
+        "properties": {
+          "name": { "type": "string", "minLength": 1 },
+          "command": { "type": "string", "minLength": 1 },
+          "ok": { "type": "boolean" },
+          "exitCode": { "type": "integer" },
+          "outputPath": { "type": "string", "minLength": 1 }
+        }
+      }
+    },
+    "ok": { "type": "boolean" }
+  }
+}
+

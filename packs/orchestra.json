@@ -1,0 +1,15 @@
+{
+  "id": "orchestra",
+  "name": "Orchestra",
+  "description": "Scale beyond a single agent: orchestrate multi-service work, keep state, and run parallel workflows without chaos.",
+  "tags": ["multi-agent", "orchestration", "systems"],
+  "modules": [
+    "command:orchestrate",
+    "command:pm2",
+    "command:multi-workflow",
+    "command:multi-backend",
+    "command:multi-frontend",
+    "command:multi-execute"
+  ]
+}
+

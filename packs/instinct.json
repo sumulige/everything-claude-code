@@ -1,0 +1,16 @@
+{
+  "id": "instinct",
+  "name": "Instinct",
+  "description": "Make your agent learn. Extract patterns from real sessions, score confidence, and evolve stable workflows over time.",
+  "tags": ["learning", "memory", "automation"],
+  "modules": [
+    "command:learn",
+    "command:instinct-status",
+    "command:instinct-import",
+    "command:instinct-export",
+    "command:evolve",
+    "skill:continuous-learning",
+    "skill:continuous-learning-v2"
+  ]
+}
+

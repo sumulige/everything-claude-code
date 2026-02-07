@@ -30,3 +30,7 @@ examples/sessions/*.tmp
 
 # Local drafts
 marketing/
+
+# ECC / Codex local artifacts
+.ecc/
+.claude/

@@ -1,0 +1,16 @@
+{
+  "id": "forge",
+  "name": "Forge",
+  "description": "Ship with confidence: TDD-first workflows, coverage discipline, and fast iteration when builds break.",
+  "tags": ["tdd", "implementation", "reliability"],
+  "modules": [
+    "command:tdd",
+    "command:test-coverage",
+    "command:build-fix",
+    "command:multi-execute",
+    "agent:tdd-guide",
+    "agent:build-error-resolver",
+    "skill:tdd-workflow"
+  ]
+}
+

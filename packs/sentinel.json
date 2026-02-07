@@ -1,0 +1,8 @@
+{
+  "id": "sentinel",
+  "name": "Sentinel",
+  "description": "Security and review as defaults: systematic threat checks, safer diffs, and an opinionated quality gate.",
+  "tags": ["security", "review", "risk"],
+  "modules": ["command:code-review", "agent:code-reviewer", "agent:security-reviewer", "skill:security-review"]
+}
+

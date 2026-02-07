@@ -1,0 +1,8 @@
+{
+  "id": "blueprint",
+  "name": "Blueprint",
+  "description": "Turn vague intent into an executable plan: requirements, risk, interfaces, and an incremental path to shipping.",
+  "tags": ["planning", "architecture", "scope"],
+  "modules": ["command:plan", "command:multi-plan", "agent:planner", "agent:architect"]
+}
+

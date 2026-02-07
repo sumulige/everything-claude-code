@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ECC Plan",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["version", "intent", "tasks"],
+  "properties": {
+    "version": { "const": 1 },
+    "intent": { "type": "string", "minLength": 1 },
+    "tasks": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "title", "kind", "dependsOn", "allowedPathPrefixes", "prompt"],
+        "properties": {
+          "id": { "type": "string", "minLength": 1 },
+          "title": { "type": "string", "minLength": 1 },
+          "kind": { "type": "string", "const": "patch" },
+          "dependsOn": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+          "allowedPathPrefixes": {
+            "type": "array",
+            "minItems": 1,
+            "items": { "type": "string", "minLength": 1 }
+          },
+          "prompt": { "type": "string", "minLength": 1 }
+        }
+      }
+    }
+  }
+}
+

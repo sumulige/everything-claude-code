@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ECC Run",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "version",
+    "runId",
+    "intent",
+    "backend",
+    "packs",
+    "status",
+    "base",
+    "worktree",
+    "artifacts",
+    "startedAt"
+  ],
+  "properties": {
+    "version": { "const": 1 },
+    "runId": { "type": "string", "minLength": 1 },
+    "intent": { "type": "string", "minLength": 1 },
+    "backend": { "type": "string", "enum": ["codex", "claude"] },
+    "packs": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "status": {
+      "type": "string",
+      "enum": ["planned", "executing", "verifying", "succeeded", "failed"]
+    },
+    "base": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["repoRoot", "branch", "sha"],
+      "properties": {
+        "repoRoot": { "type": "string", "minLength": 1 },
+        "branch": { "type": "string" },
+        "sha": { "type": "string" }
+      }
+    },
+    "worktree": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "branch"],
+      "properties": {
+        "path": { "type": "string" },
+        "branch": { "type": "string" }
+      }
+    },
+    "artifacts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["planJson", "planMd", "patchesDir", "applyJson", "verifyDir", "reportMd"],
+      "properties": {
+        "planJson": { "type": "string", "minLength": 1 },
+        "planMd": { "type": "string", "minLength": 1 },
+        "patchesDir": { "type": "string", "minLength": 1 },
+        "applyJson": { "type": "string", "minLength": 1 },
+        "verifyDir": { "type": "string", "minLength": 1 },
+        "reportMd": { "type": "string", "minLength": 1 }
+      }
+    },
+    "startedAt": { "type": "string", "minLength": 1 },
+    "endedAt": { "type": "string" }
+  }
+}
+

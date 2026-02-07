@@ -1,0 +1,23 @@
+{
+  "version": 1,
+  "intent": "demo",
+  "tasks": [
+    {
+      "id": "impl-core",
+      "title": "Implement core demo change",
+      "kind": "patch",
+      "dependsOn": [],
+      "allowedPathPrefixes": ["src/"],
+      "prompt": "Create a demo marker file at src/ecc-demo.txt with a single line: \"ecc-demo: ok\"."
+    },
+    {
+      "id": "tests",
+      "title": "Add demo smoke test artifact",
+      "kind": "patch",
+      "dependsOn": ["impl-core"],
+      "allowedPathPrefixes": ["tests/"],
+      "prompt": "Create a demo marker file at tests/ecc-demo.txt with a single line: \"ecc-demo: ok\"."
+    }
+  ]
+}
+
