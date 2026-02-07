@@ -174,4 +174,4 @@ src/
 
 ***
 
-*属于 [Everything Claude Code](https://github.com/affaan-m/everything-claude-code)*
+*属于 [ECC Conveyor](https://github.com/sumulige/ecc-conveyor)*

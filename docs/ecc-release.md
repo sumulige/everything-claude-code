@@ -68,7 +68,7 @@ The release chain is designed to make installs reliable:
 ### npm publish fails (OIDC not configured)
 - Configure npm "Trusted Publisher" for:
   - owner: `sumulige`
-  - repo: `everything-claude-code`
+  - repo: `ecc-conveyor`
   - workflow file: `publish-npm.yml`
 - Re-run publish:
 

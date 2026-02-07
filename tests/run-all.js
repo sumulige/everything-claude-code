@@ -25,7 +25,7 @@ const testFiles = [
 ];
 
 console.log('╔══════════════════════════════════════════════════════════╗');
-console.log('║           Everything Claude Code - Test Suite            ║');
+console.log('║               ECC Conveyor - Test Suite                  ║');
 console.log('╚══════════════════════════════════════════════════════════╝');
 console.log();
 

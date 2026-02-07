@@ -1,16 +1,16 @@
 {
-  "name": "everything-claude-code",
+  "name": "ecc-conveyor",
   "version": "1.4.4",
-  "description": "Everything Claude Code + ECC (Engineering Change Conveyor) CLI",
+  "description": "ECC Conveyor: Codex-first engineering delivery engine with auditable patch/worktree workflow",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/sumulige/everything-claude-code.git"
+    "url": "https://github.com/sumulige/ecc-conveyor.git"
   },
   "bugs": {
-    "url": "https://github.com/sumulige/everything-claude-code/issues"
+    "url": "https://github.com/sumulige/ecc-conveyor/issues"
   },
-  "homepage": "https://github.com/sumulige/everything-claude-code#readme",
+  "homepage": "https://github.com/sumulige/ecc-conveyor#readme",
   "bin": {
     "ecc": "./scripts/ecc.js"
   },

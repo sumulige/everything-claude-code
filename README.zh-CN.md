@@ -1,6 +1,6 @@
-# Everything Claude Code
+# ECC Conveyor
 
-[![Stars](https://img.shields.io/github/stars/affaan-m/everything-claude-code?style=flat)](https://github.com/affaan-m/everything-claude-code/stargazers)
+[![Stars](https://img.shields.io/github/stars/sumulige/ecc-conveyor?style=flat)](https://github.com/sumulige/ecc-conveyor/stargazers)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 ![Shell](https://img.shields.io/badge/-Shell-4EAA25?logo=gnu-bash&logoColor=white)
 ![TypeScript](https://img.shields.io/badge/-TypeScript-3178C6?logo=typescript&logoColor=white)
@@ -67,10 +67,10 @@
 
 ```bash
 # 添加市场
-/plugin marketplace add affaan-m/everything-claude-code
+/plugin marketplace add sumulige/ecc-conveyor
 
 # 安装插件
-/plugin install everything-claude-code@everything-claude-code
+/plugin install ecc-conveyor@ecc-conveyor
 ```
 
 ### 第二步：安装规则（必需）
@@ -79,10 +79,10 @@
 
 ```bash
 # 首先克隆仓库
-git clone https://github.com/affaan-m/everything-claude-code.git
+git clone https://github.com/sumulige/ecc-conveyor.git
 
 # 复制规则（应用于所有项目）
-cp -r everything-claude-code/rules/* ~/.claude/rules/
+cp -r ecc-conveyor/rules/* ~/.claude/rules/
 ```
 
 ### 第三步：开始使用
@@ -92,7 +92,7 @@ cp -r everything-claude-code/rules/* ~/.claude/rules/
 /plan "添加用户认证"
 
 # 查看可用命令
-/plugin list everything-claude-code@everything-claude-code
+/plugin list ecc-conveyor@ecc-conveyor
 ```
 
 ✨ **完成！** 你现在可以使用 15+ 代理、30+ 技能和 20+ 命令。
@@ -139,7 +139,7 @@ node scripts/setup-package-manager.js --detect
 这个仓库是一个 **Claude Code 插件** - 直接安装或手动复制组件。
 
 ```
-everything-claude-code/
+ecc-conveyor/
 |-- .claude-plugin/   # 插件和市场清单
 |   |-- plugin.json         # 插件元数据和组件路径
 |   |-- marketplace.json    # /plugin marketplace add 的市场目录
@@ -297,10 +297,10 @@ everything-claude-code/
 
 ```bash
 # 将此仓库添加为市场
-/plugin marketplace add affaan-m/everything-claude-code
+/plugin marketplace add sumulige/ecc-conveyor
 
 # 安装插件
-/plugin install everything-claude-code@everything-claude-code
+/plugin install ecc-conveyor@ecc-conveyor
 ```
 
 或直接添加到你的 `~/.claude/settings.json`：
@@ -308,15 +308,15 @@ everything-claude-code/
 ```json
 {
   "extraKnownMarketplaces": {
-    "everything-claude-code": {
+    "ecc-conveyor": {
       "source": {
         "source": "github",
-        "repo": "affaan-m/everything-claude-code"
+        "repo": "sumulige/ecc-conveyor"
       }
     }
   },
   "enabledPlugins": {
-    "everything-claude-code@everything-claude-code": true
+    "ecc-conveyor@ecc-conveyor": true
   }
 }
 ```
@@ -327,14 +327,14 @@ everything-claude-code/
 >
 > ```bash
 > # 首先克隆仓库
-> git clone https://github.com/affaan-m/everything-claude-code.git
+> git clone https://github.com/sumulige/ecc-conveyor.git
 >
 > # 选项 A：用户级规则（应用于所有项目）
-> cp -r everything-claude-code/rules/* ~/.claude/rules/
+> cp -r ecc-conveyor/rules/* ~/.claude/rules/
 >
 > # 选项 B：项目级规则（仅应用于当前项目）
 > mkdir -p .claude/rules
-> cp -r everything-claude-code/rules/* .claude/rules/
+> cp -r ecc-conveyor/rules/* .claude/rules/
 > ```
 
 ---
@@ -345,19 +345,19 @@ everything-claude-code/
 
 ```bash
 # 克隆仓库
-git clone https://github.com/affaan-m/everything-claude-code.git
+git clone https://github.com/sumulige/ecc-conveyor.git
 
 # 将代理复制到你的 Claude 配置
-cp everything-claude-code/agents/*.md ~/.claude/agents/
+cp ecc-conveyor/agents/*.md ~/.claude/agents/
 
 # 复制规则
-cp everything-claude-code/rules/*.md ~/.claude/rules/
+cp ecc-conveyor/rules/*.md ~/.claude/rules/
 
 # 复制命令
-cp everything-claude-code/commands/*.md ~/.claude/commands/
+cp ecc-conveyor/commands/*.md ~/.claude/commands/
 
 # 复制技能
-cp -r everything-claude-code/skills/* ~/.claude/skills/
+cp -r ecc-conveyor/skills/* ~/.claude/skills/
 ```
 
 #### 将钩子添加到 settings.json
@@ -501,7 +501,7 @@ node tests/hooks/hooks.test.js
 
 ## 🌟 Star 历史
 
-[![Star History Chart](https://api.star-history.com/svg?repos=affaan-m/everything-claude-code&type=Date)](https://star-history.com/#affaan-m/everything-claude-code&Date)
+[![Star History Chart](https://api.star-history.com/svg?repos=sumulige/ecc-conveyor&type=Date)](https://star-history.com/#sumulige/ecc-conveyor&Date)
 
 ---
 

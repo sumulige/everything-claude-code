@@ -24,8 +24,8 @@
  *
  * Option 2: Clone and use directly
  * ```bash
- * git clone https://github.com/affaan-m/everything-claude-code
- * cd everything-claude-code
+ * git clone https://github.com/sumulige/ecc-conveyor
+ * cd ecc-conveyor
  * opencode
  * ```
  *

@@ -1,10 +1,10 @@
 **Language:** English | [繁體中文](docs/zh-TW/README.md)
 
-# Everything Claude Code
+# ECC Conveyor
 
-[![Stars](https://img.shields.io/github/stars/affaan-m/everything-claude-code?style=flat)](https://github.com/affaan-m/everything-claude-code/stargazers)
-[![Forks](https://img.shields.io/github/forks/affaan-m/everything-claude-code?style=flat)](https://github.com/affaan-m/everything-claude-code/network/members)
-[![Contributors](https://img.shields.io/github/contributors/affaan-m/everything-claude-code?style=flat)](https://github.com/affaan-m/everything-claude-code/graphs/contributors)
+[![Stars](https://img.shields.io/github/stars/sumulige/ecc-conveyor?style=flat)](https://github.com/sumulige/ecc-conveyor/stargazers)
+[![Forks](https://img.shields.io/github/forks/sumulige/ecc-conveyor?style=flat)](https://github.com/sumulige/ecc-conveyor/network/members)
+[![Contributors](https://img.shields.io/github/contributors/sumulige/ecc-conveyor?style=flat)](https://github.com/sumulige/ecc-conveyor/graphs/contributors)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 ![Shell](https://img.shields.io/badge/-Shell-4EAA25?logo=gnu-bash&logoColor=white)
 ![TypeScript](https://img.shields.io/badge/-TypeScript-3178C6?logo=typescript&logoColor=white)
@@ -71,7 +71,7 @@ This repo is the raw code only. The guides explain everything.
 
 ### v1.4.1 — Bug Fix (Feb 2026)
 
-- **Fixed instinct import content loss** — `parse_instinct_file()` was silently dropping all content after frontmatter (Action, Evidence, Examples sections) during `/instinct-import`. Fixed by community contributor @ericcai0814 ([#148](https://github.com/affaan-m/everything-claude-code/issues/148), [#161](https://github.com/affaan-m/everything-claude-code/pull/161))
+- **Fixed instinct import content loss** — `parse_instinct_file()` was silently dropping all content after frontmatter (Action, Evidence, Examples sections) during `/instinct-import`. Fixed by community contributor @ericcai0814 ([#148](https://github.com/sumulige/ecc-conveyor/issues/148), [#161](https://github.com/sumulige/ecc-conveyor/pull/161))
 
 ### v1.4.0 — Multi-Language Rules, Installation Wizard & PM2 (Feb 2026)
 
@@ -95,7 +95,7 @@ This repo is the raw code only. The guides explain everything.
 - **Session management** — `/sessions` command for session history
 - **Continuous learning v2** — Instinct-based learning with confidence scoring, import/export, evolution
 
-See the full changelog in [Releases](https://github.com/affaan-m/everything-claude-code/releases).
+See the full changelog in [Releases](https://github.com/sumulige/ecc-conveyor/releases).
 
 ---
 
@@ -107,10 +107,10 @@ Get up and running in under 2 minutes:
 
 ```bash
 # Add marketplace
-/plugin marketplace add affaan-m/everything-claude-code
+/plugin marketplace add sumulige/ecc-conveyor
 
 # Install plugin
-/plugin install everything-claude-code@everything-claude-code
+/plugin install ecc-conveyor@ecc-conveyor
 ```
 
 ### Step 2: Install Rules (Required)
@@ -119,15 +119,15 @@ Get up and running in under 2 minutes:
 
 ```bash
 # Clone the repo first
-git clone https://github.com/affaan-m/everything-claude-code.git
+git clone https://github.com/sumulige/ecc-conveyor.git
 
 # Install common rules (required)
-cp -r everything-claude-code/rules/common/* ~/.claude/rules/
+cp -r ecc-conveyor/rules/common/* ~/.claude/rules/
 
 # Install language-specific rules (pick your stack)
-cp -r everything-claude-code/rules/typescript/* ~/.claude/rules/
-cp -r everything-claude-code/rules/python/* ~/.claude/rules/
-cp -r everything-claude-code/rules/golang/* ~/.claude/rules/
+cp -r ecc-conveyor/rules/typescript/* ~/.claude/rules/
+cp -r ecc-conveyor/rules/python/* ~/.claude/rules/
+cp -r ecc-conveyor/rules/golang/* ~/.claude/rules/
 ```
 
 ### Step 3: Start Using
@@ -137,7 +137,7 @@ cp -r everything-claude-code/rules/golang/* ~/.claude/rules/
 /plan "Add user authentication"
 
 # Check available commands
-/plugin list everything-claude-code@everything-claude-code
+/plugin list ecc-conveyor@ecc-conveyor
 ```
 
 ✨ **That's it!** You now have access to 15+ agents, 30+ skills, and 30+ commands.
@@ -192,7 +192,7 @@ Or use the `/setup-pm` command in Claude Code.
 This repo is a **Claude Code plugin** - install it directly or copy components manually.
 
 ```
-everything-claude-code/
+ecc-conveyor/
 |-- .claude-plugin/   # Plugin and marketplace manifests
 |   |-- plugin.json         # Plugin metadata and component paths
 |   |-- marketplace.json    # Marketplace catalog for /plugin marketplace add
@@ -391,7 +391,7 @@ Claude Code v2.1+ **automatically loads** `hooks/hooks.json` from any installed 
 Duplicate hooks file detected: ./hooks/hooks.json resolves to already-loaded file
 ```
 
-**History:** This has caused repeated fix/revert cycles in this repo ([#29](https://github.com/affaan-m/everything-claude-code/issues/29), [#52](https://github.com/affaan-m/everything-claude-code/issues/52), [#103](https://github.com/affaan-m/everything-claude-code/issues/103)). The behavior changed between Claude Code versions, leading to confusion. We now have a regression test to prevent this from being reintroduced.
+**History:** This has caused repeated fix/revert cycles in this repo ([#29](https://github.com/sumulige/ecc-conveyor/issues/29), [#52](https://github.com/sumulige/ecc-conveyor/issues/52), [#103](https://github.com/sumulige/ecc-conveyor/issues/103)). The behavior changed between Claude Code versions, leading to confusion. We now have a regression test to prevent this from being reintroduced.
 
 ---
 
@@ -403,10 +403,10 @@ The easiest way to use this repo - install as a Claude Code plugin:
 
 ```bash
 # Add this repo as a marketplace
-/plugin marketplace add affaan-m/everything-claude-code
+/plugin marketplace add sumulige/ecc-conveyor
 
 # Install the plugin
-/plugin install everything-claude-code@everything-claude-code
+/plugin install ecc-conveyor@ecc-conveyor
 ```
 
 Or add directly to your `~/.claude/settings.json`:
@@ -414,15 +414,15 @@ Or add directly to your `~/.claude/settings.json`:
 ```json
 {
   "extraKnownMarketplaces": {
-    "everything-claude-code": {
+    "ecc-conveyor": {
       "source": {
         "source": "github",
-        "repo": "affaan-m/everything-claude-code"
+        "repo": "sumulige/ecc-conveyor"
       }
     }
   },
   "enabledPlugins": {
-    "everything-claude-code@everything-claude-code": true
+    "ecc-conveyor@ecc-conveyor": true
   }
 }
 ```
@@ -433,18 +433,18 @@ This gives you instant access to all commands, agents, skills, and hooks.
 >
 > ```bash
 > # Clone the repo first
-> git clone https://github.com/affaan-m/everything-claude-code.git
+> git clone https://github.com/sumulige/ecc-conveyor.git
 >
 > # Option A: User-level rules (applies to all projects)
-> cp -r everything-claude-code/rules/common/* ~/.claude/rules/
-> cp -r everything-claude-code/rules/typescript/* ~/.claude/rules/   # pick your stack
-> cp -r everything-claude-code/rules/python/* ~/.claude/rules/
-> cp -r everything-claude-code/rules/golang/* ~/.claude/rules/
+> cp -r ecc-conveyor/rules/common/* ~/.claude/rules/
+> cp -r ecc-conveyor/rules/typescript/* ~/.claude/rules/   # pick your stack
+> cp -r ecc-conveyor/rules/python/* ~/.claude/rules/
+> cp -r ecc-conveyor/rules/golang/* ~/.claude/rules/
 >
 > # Option B: Project-level rules (applies to current project only)
 > mkdir -p .claude/rules
-> cp -r everything-claude-code/rules/common/* .claude/rules/
-> cp -r everything-claude-code/rules/typescript/* .claude/rules/     # pick your stack
+> cp -r ecc-conveyor/rules/common/* .claude/rules/
+> cp -r ecc-conveyor/rules/typescript/* .claude/rules/     # pick your stack
 > ```
 
 ---
@@ -455,22 +455,22 @@ If you prefer manual control over what's installed:
 
 ```bash
 # Clone the repo
-git clone https://github.com/affaan-m/everything-claude-code.git
+git clone https://github.com/sumulige/ecc-conveyor.git
 
 # Copy agents to your Claude config
-cp everything-claude-code/agents/*.md ~/.claude/agents/
+cp ecc-conveyor/agents/*.md ~/.claude/agents/
 
 # Copy rules (common + language-specific)
-cp -r everything-claude-code/rules/common/* ~/.claude/rules/
-cp -r everything-claude-code/rules/typescript/* ~/.claude/rules/   # pick your stack
-cp -r everything-claude-code/rules/python/* ~/.claude/rules/
-cp -r everything-claude-code/rules/golang/* ~/.claude/rules/
+cp -r ecc-conveyor/rules/common/* ~/.claude/rules/
+cp -r ecc-conveyor/rules/typescript/* ~/.claude/rules/   # pick your stack
+cp -r ecc-conveyor/rules/python/* ~/.claude/rules/
+cp -r ecc-conveyor/rules/golang/* ~/.claude/rules/
 
 # Copy commands
-cp everything-claude-code/commands/*.md ~/.claude/commands/
+cp ecc-conveyor/commands/*.md ~/.claude/commands/
 
 # Copy skills
-cp -r everything-claude-code/skills/* ~/.claude/skills/
+cp -r ecc-conveyor/skills/* ~/.claude/skills/
 ```
 
 #### Add hooks to settings.json
@@ -659,7 +659,7 @@ OpenCode's plugin system is MORE sophisticated than Claude Code with 20+ event t
 
 **Option 1: Use directly**
 ```bash
-cd everything-claude-code
+cd ecc-conveyor
 opencode
 ```
 
@@ -717,7 +717,7 @@ These configs work for my workflow. You should:
 
 ## 🌟 Star History
 
-[![Star History Chart](https://api.star-history.com/svg?repos=affaan-m/everything-claude-code&type=Date)](https://star-history.com/#affaan-m/everything-claude-code&Date)
+[![Star History Chart](https://api.star-history.com/svg?repos=sumulige/ecc-conveyor&type=Date)](https://star-history.com/#sumulige/ecc-conveyor&Date)
 
 ---
 

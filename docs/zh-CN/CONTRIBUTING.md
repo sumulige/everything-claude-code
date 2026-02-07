@@ -1,4 +1,4 @@
-# 为 Everything Claude Code 做贡献
+# 为 ECC Conveyor 做贡献
 
 感谢您希望做出贡献。这个仓库旨在成为 Claude Code 用户的社区资源。
 
@@ -66,8 +66,8 @@
 ### 1. Fork 仓库
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/everything-claude-code.git
-cd everything-claude-code
+git clone https://github.com/YOUR_USERNAME/ecc-conveyor.git
+cd ecc-conveyor
 ```
 
 ### 2. 创建一个分支

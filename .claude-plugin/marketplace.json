@@ -1,5 +1,5 @@
 {
-  "name": "everything-claude-code",
+  "name": "ecc-conveyor",
   "owner": {
     "name": "Affaan Mustafa",
     "email": "affaan@example.com"
@@ -9,14 +9,14 @@
   },
   "plugins": [
     {
-      "name": "everything-claude-code",
+      "name": "ecc-conveyor",
       "source": "./",
       "description": "Complete collection of agents, skills, hooks, commands, and rules evolved over 10+ months of intensive daily use",
       "author": {
         "name": "Affaan Mustafa"
       },
-      "homepage": "https://github.com/affaan-m/everything-claude-code",
-      "repository": "https://github.com/affaan-m/everything-claude-code",
+      "homepage": "https://github.com/sumulige/ecc-conveyor",
+      "repository": "https://github.com/sumulige/ecc-conveyor",
       "license": "MIT",
       "keywords": [
         "agents",

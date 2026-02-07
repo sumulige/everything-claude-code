@@ -52,7 +52,7 @@ Environment:
 
 ```bash
 # from a local checkout path
-npm install -g /path/to/everything-claude-code
+npm install -g /path/to/ecc-conveyor
 
 ecc --help
 ```
@@ -61,7 +61,7 @@ ecc --help
 
 ```bash
 # from a local checkout path
-npm install -D /path/to/everything-claude-code
+npm install -D /path/to/ecc-conveyor
 
 npx ecc --help
 ```

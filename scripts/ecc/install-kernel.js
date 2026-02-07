@@ -87,7 +87,7 @@ function defaultBaseUrl(pkgVersion, pkg) {
   const repo = pkg && pkg.repository ? pkg.repository : null;
   const repoUrl = normalizeRepoUrl(typeof repo === 'string' ? repo : (repo && repo.url));
   const m = repoUrl && repoUrl.match(/^https?:\/\/github\.com\/[^/]+\/[^/]+/);
-  const baseRepo = m ? m[0] : 'https://github.com/sumulige/everything-claude-code';
+  const baseRepo = m ? m[0] : 'https://github.com/sumulige/ecc-conveyor';
   return `${baseRepo}/releases/download/v${pkgVersion}`;
 }
 

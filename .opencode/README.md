@@ -23,8 +23,8 @@ Add to your `opencode.json`:
 Clone and run OpenCode in the repository:
 
 ```bash
-git clone https://github.com/affaan-m/everything-claude-code
-cd everything-claude-code
+git clone https://github.com/sumulige/ecc-conveyor
+cd ecc-conveyor
 opencode
 ```
 
