@@ -99,13 +99,32 @@ jobs:
           node-version: '20.x'
           registry-url: 'https://registry.npmjs.org'
 
+      - name: Check if already published
+        id: published
+        shell: bash
+        run: |
+          set -euo pipefail
+          NAME="$(node -p "require('./package.json').name")"
+          VER="$(node -p "require('./package.json').version")"
+
+          if npm view "${NAME}@${VER}" version >/dev/null 2>&1; then
+            echo "already=true" >> "$GITHUB_OUTPUT"
+            echo "Already published: ${NAME}@${VER}"
+          else
+            echo "already=false" >> "$GITHUB_OUTPUT"
+            echo "Not yet published: ${NAME}@${VER}"
+          fi
+
       - name: Install dependencies
+        if: steps.published.outputs.already != 'true'
         run: npm ci
 
       - name: Run tests
+        if: steps.published.outputs.already != 'true'
         run: npm test
 
       - name: Check npm token
+        if: steps.published.outputs.already != 'true'
         shell: bash
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
@@ -117,6 +136,7 @@ jobs:
           fi
 
       - name: Publish
+        if: steps.published.outputs.already != 'true'
         run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
