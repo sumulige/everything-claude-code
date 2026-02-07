@@ -26,6 +26,7 @@ function run(cmd, args, { cwd, env, allowFail = false } = {}) {
     cwd,
     env: env || process.env,
     encoding: 'utf8',
+    shell: process.platform === 'win32',
     stdio: ['ignore', 'pipe', 'pipe']
   });
   const out = {
