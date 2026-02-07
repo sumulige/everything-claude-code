@@ -17,7 +17,7 @@ jobs:
   build-kernel:
     name: Build ecc-kernel (${{ matrix.platform }}-${{ matrix.arch }})
     runs-on: ${{ matrix.os }}
-    timeout-minutes: 15
+    timeout-minutes: 20
 
     strategy:
       fail-fast: false
@@ -28,23 +28,33 @@ jobs:
             platform: linux
             arch: x64
             target: x86_64-unknown-linux-musl
+            builder: cargo
+            ext: ""
+          - os: ubuntu-latest
+            platform: linux
+            arch: arm64
+            target: aarch64-unknown-linux-musl
+            builder: cross
             ext: ""
           # macOS
           - os: macos-latest
             platform: darwin
             arch: x64
             target: x86_64-apple-darwin
+            builder: cargo
             ext: ""
           - os: macos-latest
             platform: darwin
             arch: arm64
             target: aarch64-apple-darwin
+            builder: cargo
             ext: ""
           # Windows
           - os: windows-latest
             platform: windows
             arch: x64
             target: x86_64-pc-windows-msvc
+            builder: cargo
             ext: ".exe"
 
     steps:
@@ -54,7 +64,7 @@ jobs:
           ref: ${{ github.event_name == 'workflow_dispatch' && inputs.tag || github.ref_name }}
 
       - name: Install musl tools (Linux)
-        if: matrix.platform == 'linux'
+        if: matrix.target == 'x86_64-unknown-linux-musl'
         run: |
           sudo apt-get update
           sudo apt-get install -y musl-tools
@@ -64,8 +74,17 @@ jobs:
         with:
           targets: ${{ matrix.target }}
 
-      - name: Build ecc-kernel
-        run: cargo build --release --manifest-path crates/ecc-kernel/Cargo.toml --target ${{ matrix.target }}
+      - name: Install cross (Linux aarch64 musl)
+        if: matrix.builder == 'cross'
+        run: cargo install cross --locked
+
+      - name: Build ecc-kernel (cargo)
+        if: matrix.builder != 'cross'
+        run: cargo build --release --locked --manifest-path crates/ecc-kernel/Cargo.toml --target ${{ matrix.target }}
+
+      - name: Build ecc-kernel (cross)
+        if: matrix.builder == 'cross'
+        run: cross build --release --locked --manifest-path crates/ecc-kernel/Cargo.toml --target ${{ matrix.target }}
 
       - name: Package + checksums
         shell: bash
