@@ -1,18 +1,21 @@
 {
   "name": "ecc-conveyor",
-  "version": "1.4.5",
+  "version": "1.4.6",
   "description": "ECC Conveyor: Codex-first engineering delivery engine with auditable patch/worktree workflow",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/sumulige/ecc-conveyor.git"
+    "url": "git+https://github.com/sumulige/ecc-conveyor.git"
   },
   "bugs": {
     "url": "https://github.com/sumulige/ecc-conveyor/issues"
   },
   "homepage": "https://github.com/sumulige/ecc-conveyor#readme",
+  "publishConfig": {
+    "access": "public"
+  },
   "bin": {
-    "ecc": "./scripts/ecc.js"
+    "ecc": "scripts/ecc.js"
   },
   "files": [
     "scripts/ecc.js",
