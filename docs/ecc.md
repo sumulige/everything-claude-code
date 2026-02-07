@@ -13,10 +13,40 @@ Core properties:
 
 ## Install
 
-### Option A: Run from source (this repo)
+ECC is distributed as an npm package: `ecc-conveyor` (CLI: `ecc`).
+
+### Option A: Install into a project (recommended)
+
+```bash
+npm install -D ecc-conveyor
+
+npx ecc --help
+```
+
+### Option B: Install as a CLI (global)
+
+```bash
+npm install -g ecc-conveyor
+
+ecc --help
+```
+
+### Option C: Run from source (this repo)
 
 ```bash
 node scripts/ecc.js --help
+```
+
+### Option D: Install from a local checkout path (dev)
+
+```bash
+# project-local
+npm install -D /path/to/ecc-conveyor
+npx ecc --help
+
+# global
+npm install -g /path/to/ecc-conveyor
+ecc --help
 ```
 
 ## Rust Kernel (Optional, Low-Memory)
@@ -48,24 +78,6 @@ Environment:
 - `ECC_KERNEL=auto|rust|node` (default: `auto`)
 - `ECC_KERNEL_PATH=/absolute/path/to/ecc-kernel`
 
-### Option B: Install as a CLI (global)
-
-```bash
-# from a local checkout path
-npm install -g /path/to/ecc-conveyor
-
-ecc --help
-```
-
-### Option C: Install into a project (recommended)
-
-```bash
-# from a local checkout path
-npm install -D /path/to/ecc-conveyor
-
-npx ecc --help
-```
-
 ---
 
 ## Quickstart (Mock Provider)
@@ -73,9 +85,9 @@ npx ecc --help
 Use the deterministic mock provider to validate the pipeline without calling Codex:
 
 ```bash
-ecc init
+npx ecc init
 
-ECC_PROVIDER=mock ECC_FIXTURE=basic ecc run "demo" --run-id demo
+ECC_PROVIDER=mock ECC_FIXTURE=basic npx ecc run "demo" --run-id demo
 ```
 
 Artifacts:
@@ -92,10 +104,10 @@ Prereqs:
 - project is a git repo
 
 ```bash
-ecc init
-ecc doctor
+npx ecc init
+npx ecc doctor
 
-ecc run "Add a hello endpoint" --run-id hello-endpoint
+npx ecc run "Add a hello endpoint" --run-id hello-endpoint
 ```
 
 ---
@@ -103,15 +115,16 @@ ecc run "Add a hello endpoint" --run-id hello-endpoint
 ## Commands
 
 ```bash
-ecc packs
-ecc init [--backend codex|claude] [--packs a,b,c]
-ecc doctor
-ecc plan "<intent>" [--run-id <id>]
-ecc exec <runId> [--worktree-root <path>] [--keep-worktree] [--commit]
-ecc verify <runId> [--worktree-root <path>]
-ecc run "<intent>" [--run-id <id>] [--worktree-root <path>] [--keep-worktree] [--commit]
+npx ecc packs
+npx ecc init [--backend codex|claude] [--packs a,b,c]
+npx ecc doctor
+npx ecc plan "<intent>" [--run-id <id>]
+npx ecc exec <runId> [--worktree-root <path>] [--keep-worktree] [--commit]
+npx ecc verify <runId> [--worktree-root <path>]
+npx ecc run "<intent>" [--run-id <id>] [--worktree-root <path>] [--keep-worktree] [--commit]
 ```
 
 Notes:
+- If installed globally, you can use `ecc` instead of `npx ecc`.
 - `--commit` commits in the worktree **only after verify passes**.
 - If a patch touches files outside a task's `allowedPathPrefixes`, `exec` **fails fast**.

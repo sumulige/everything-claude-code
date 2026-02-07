@@ -79,4 +79,3 @@ The release chain is designed to make installs reliable:
 ### Rollback
 - If a bad version is published to npm: publish a new patch version.
 - If a GitHub Release is broken: re-run `Release` workflow for the same tag, or create a new tag.
-

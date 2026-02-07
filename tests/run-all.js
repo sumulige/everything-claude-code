@@ -15,6 +15,7 @@ const testFiles = [
   'lib/package-manager.test.js',
   'hooks/hooks.test.js',
   'ecc/ecc.test.js',
+  'ecc/docs-install.test.js',
   'ecc/schema.test.js',
   'ecc/kernel-protocol.test.js',
   'ecc/json-extract.test.js',
