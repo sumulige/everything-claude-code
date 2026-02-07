@@ -3,6 +3,14 @@
   "version": "1.4.1",
   "description": "Everything Claude Code + ECC (Engineering Change Conveyor) CLI",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sumulige/everything-claude-code.git"
+  },
+  "bugs": {
+    "url": "https://github.com/sumulige/everything-claude-code/issues"
+  },
+  "homepage": "https://github.com/sumulige/everything-claude-code#readme",
   "bin": {
     "ecc": "./scripts/ecc.js"
   },
@@ -22,6 +30,8 @@
   ],
   "scripts": {
     "ecc:build-kernel": "cargo build --release --manifest-path crates/ecc-kernel/Cargo.toml",
+    "ecc:install-kernel": "node scripts/ecc/install-kernel.js",
+    "postinstall": "node scripts/ecc/install-kernel.js",
     "test": "node tests/run-all.js"
   },
   "devDependencies": {

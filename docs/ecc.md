@@ -24,6 +24,18 @@ node scripts/ecc.js --help
 ECC can offload the heavy "kernel" operations (worktree / patch apply / verify command runner)
 to a small Rust binary: `ecc-kernel`.
 
+### Prebuilt (no Rust required)
+
+When installed via npm, ECC runs a `postinstall` that tries to download a prebuilt `ecc-kernel`
+from the GitHub release matching your `package.json` version tag (`vX.Y.Z`).
+
+Controls:
+- `ECC_KERNEL_INSTALL=0` disables download
+- `ECC_KERNEL_INSTALL=required` fails install if download fails
+- `ECC_KERNEL_BASE_URL=...` overrides download base URL
+
+### Build From Source
+
 Build it (from repo root):
 
 ```bash

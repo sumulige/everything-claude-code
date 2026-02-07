@@ -38,3 +38,4 @@ marketing/
 # ECC / Codex local artifacts
 .ecc/
 .claude/
+scripts/ecc/bin/

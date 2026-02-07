@@ -26,6 +26,22 @@ function binName() {
   return process.platform === 'win32' ? 'ecc-kernel.exe' : 'ecc-kernel';
 }
 
+function platformArchKey() {
+  const platform = process.platform;
+  const arch = process.arch;
+  const os =
+    platform === 'darwin' ? 'darwin' :
+      platform === 'linux' ? 'linux' :
+        platform === 'win32' ? 'windows' :
+          null;
+  const cpu =
+    arch === 'x64' ? 'x64' :
+      arch === 'arm64' ? 'arm64' :
+        null;
+  if (!os || !cpu) return null;
+  return `${os}-${cpu}`;
+}
+
 function tryKernelFromPath() {
   const res = spawnSync('ecc-kernel', ['--version'], {
     encoding: 'utf8',
@@ -40,6 +56,13 @@ function findKernelBinary() {
   if (process.env.ECC_KERNEL_PATH) {
     const p = path.resolve(String(process.env.ECC_KERNEL_PATH));
     if (isFile(p)) return p;
+  }
+
+  // Preferred location for prebuilt binaries installed via postinstall.
+  const key = platformArchKey();
+  if (key) {
+    const packaged = path.join(__dirname, 'bin', key, binName());
+    if (isFile(packaged)) return packaged;
   }
 
   const fromPath = tryKernelFromPath();
