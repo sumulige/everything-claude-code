@@ -17,9 +17,8 @@ const path = require('path');
 const { spawnSync } = require('child_process');
 
 function bin(name) {
-  if (process.platform !== 'win32') return name;
-  if (name === 'node') return name;
-  return `${name}.cmd`;
+  // Let Node resolve platform-specific shims (e.g., npm.cmd/npx.cmd on Windows).
+  return name;
 }
 
 function run(cmd, args, { cwd, env, allowFail = false } = {}) {
@@ -32,11 +31,13 @@ function run(cmd, args, { cwd, env, allowFail = false } = {}) {
   const out = {
     status: typeof res.status === 'number' ? res.status : 1,
     stdout: res.stdout || '',
-    stderr: res.stderr || ''
+    stderr: res.stderr || '',
+    error: res.error ? res.error.message : ''
   };
   if (!allowFail && out.status !== 0) {
     const msg = [
       `${cmd} ${args.join(' ')} failed (exit ${out.status})`,
+      out.error ? `error:\n${out.error}` : null,
       out.stdout.trim() ? `stdout:\n${out.stdout.trim()}` : null,
       out.stderr.trim() ? `stderr:\n${out.stderr.trim()}` : null
     ].filter(Boolean).join('\n\n');
