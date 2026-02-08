@@ -1037,7 +1037,10 @@ async function main() {
 
   const owner = registry.repo && registry.repo.owner ? registry.repo.owner : 'sumulige';
   const repo = registry.repo && registry.repo.name ? registry.repo.name : 'ecc-conveyor';
-  const ref = registry.repo && (registry.repo.tag || registry.repo.sha || registry.repo.defaultBranch) ? (registry.repo.tag || registry.repo.sha || registry.repo.defaultBranch) : 'main';
+  const ref =
+    registry.repo && (registry.repo.tag || registry.repo.defaultBranch || registry.repo.sha)
+      ? (registry.repo.tag || registry.repo.defaultBranch || registry.repo.sha)
+      : 'main';
 
   const packs = registry.packs || [];
   const modules = flattenModules(registry);
